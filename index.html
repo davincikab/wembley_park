@@ -335,7 +335,6 @@
 
             // add eventListener
             $(element).on("mouseover", function(e) {
-                console.log(popup.isOpen());
                 if(previousPopup && previousPopup.isOpen()) {
                     previousPopup.remove();
                 }
@@ -350,12 +349,18 @@
                     element.style.zIndex = 0;
 
                     if(popup.isOpen()) {
-                        marker.togglePopup();
+                        // marker.togglePopup();
+                        popup.remove();
                     }
                 });
+
+                previousPopup = popup;
             });
 
+            
+
             $(element).on("mouseout", function(e) {
+
             });
 
             $(element).on("click", function(e) {
@@ -366,7 +371,7 @@
                 if(previousPopup && previousPopup.isOpen()) {
                     previousPopup.remove();
                 }
-                marker.togglePopup();
+                // marker.togglePopup();
 
                 // add marker active marker
                 if(previousElement) {
