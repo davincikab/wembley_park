@@ -239,7 +239,7 @@
         var map = new mapboxgl.Map({
             container: 'map', 
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: {lng: -0.2835366139750022, lat: 51.55963645804215}, // starting position
+            center: {lng: -0.2811298984814812, lat: 51.55842596243019}, // starting position
             zoom: 15.17,// starting zoom
         });
 
@@ -339,7 +339,7 @@
                 if(previousPopup && previousPopup.isOpen()) {
                     previousPopup.remove();
                 }
-                
+
                 if(!popup.isOpen()) {
                     marker.togglePopup();
                 }
