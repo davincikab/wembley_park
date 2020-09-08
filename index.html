@@ -45,7 +45,8 @@
         width: 20px;
         border-radius: 50%;
         box-shadow: 2px 2px 0.3em #7c7c7c;
-        background-color: hsl(240deg 16% 43%);
+        background-color: #Fc4c02;
+        cursor: pointer;
     }
 
     .mapboxgl-popup-content  {
@@ -88,11 +89,23 @@
         color: #fff;
         left: 20%;
         mix-blend-mode: soft-light;
+
     }
 
     .popup-content .img {
         width: 240px;
         height: 200px;
+    }
+
+    .popup-content .more-info {
+        position: absolute;
+        bottom: 0%;
+        margin: 0 4px 10px;
+        right: 30%;
+        font-size: 1.4em;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        text-shadow: 1px 1px 0.3em #343434;
     }
 
     .popup-title {
@@ -104,7 +117,7 @@
         position: absolute;
         z-index: 1;
         background-color: #fff;
-        top:5%;
+        top:70%;
         left:2%;
         height: auto;
         width:94vw;
@@ -131,6 +144,7 @@
 
     .popup-description .popup-title {
         text-align: center;
+        width: 80%;
     }
 
     .popup-description p {
@@ -155,14 +169,13 @@
 
     .media .btn {
         text-align: center;
-        background-color: transparent;
+        background-color: #fff;
         position: absolute;
-        border: 2px solid #3c3c3c;
+        border: 2px solid #Fc4c02;
         border-radius: 50%;
         padding: 0em 0.3em;
-        color: #fff;
+        color: #Fc4c02;
         font-size: 1.4rem;
-        box-shadow: 2px 2px 0.5em 0.1em #fff2f2;
     }
 
     .media .forward-btn {
@@ -200,6 +213,7 @@
     @media(min-width: 50em) {
         .description {
             width:400px;
+            top:5%;
         }
     }
 </style>
@@ -292,6 +306,7 @@
             let popupContent = "<div class='popup-content'>"+
             "<h5 class='popup-title'>"+ art.Name +"</h5>"+
             "<img class='img' src='images/"+ art.Name.replace("'","") + "/" + image +".png'>"+
+            "<p class='more-info'>&larr; <small>Click for more<small></p>"
             "</div>";
 
             var popup = new mapboxgl.Popup({
