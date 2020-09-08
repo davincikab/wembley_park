@@ -335,6 +335,11 @@
 
             // add eventListener
             $(element).on("mouseover", function(e) {
+                console.log(popup.isOpen());
+                if(previousPopup && previousPopup.isOpen()) {
+                    previousPopup.remove();
+                }
+                
                 if(!popup.isOpen()) {
                     marker.togglePopup();
                 }
@@ -358,11 +363,15 @@
                 currentArtWork = art;
 
                 console.log(popup.isOpen());
+                if(previousPopup && previousPopup.isOpen()) {
+                    previousPopup.remove();
+                }
                 marker.togglePopup();
 
                 // add marker active marker
                 if(previousElement) {
                     previousElement.classList.remove("active-marker");
+                    previousElement.style.zIndex = 0;
                 }
 
                 element.classList.add("active-marker");
@@ -374,6 +383,7 @@
                 updateDescriptionTab(art);
 
                 previousElement = element;
+                previousPopup = popup;
             });
 
         }
