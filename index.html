@@ -154,9 +154,9 @@
     }
 
     .popup-description p {
-        margin: 0.8em;
+        margin: 0.4em;
         font-size: 0.95rem;
-        line-height: 1.4;
+        line-height: 1.57;
     }
 
     p >  b {
@@ -243,7 +243,7 @@
             zoom: 15.17,// starting zoom
         });
 
-        // let dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSpCda-QzjlEz8wJWRAfiKFoRxwMrvUC5s28JaVCmXZWohU3nXEfN0Jgq1WUVqKf25ZENhyErK4Gw0z/pub?gid=0&single=true&output=csv";
+        let imageUrl = "https://wembleyparkldn.github.io/WembleyParkLDN/images/";
         let dataUrl = "https://docs.google.com/spreadsheets/d/1QPi6wfTYvbMbwsktwVcp_YwhUg5dJr9EQIMZLcPG2ds/edit?usp=sharing";
         
         // url
@@ -311,7 +311,7 @@
             console.log(image);
             let popupContent = "<div class='popup-content'>"+
             "<h5 class='popup-title'>"+ art.Name +"</h5>"+
-            "<img class='img' src='images/"+ art.Name.replace("'","") + "/" + image +".png'>"+
+            "<img class='img' src='"+ imageUrl + art.Name.replace("'","").trim() + "/" + image +".png'>"+
             "<p class='more-info'>&larr; <small>Click for more<small></p>"
             "</div>";
 
@@ -404,16 +404,16 @@
             // create an array of images
             let imagesUrl = images.map((image, i) => {
                 if(i == 0) {
-                    return "<img src='images/" + art.Name.replace("'","") + "/" + image.trim() +".png' class='img-carousel img-active'>";
+                    return "<img src='" + imageUrl + art.Name.replace("'","").trim() + "/" + image.trim() +".png' class='img-carousel img-active'>";
                 }
-                return "<img src='images/" + art.Name.replace("'","") + "/" + image.trim() +".png' class='img-carousel'>";
+                return "<img src='" + imageUrl + art.Name.replace("'","").trim()+ "/" + image.trim() +".png' class='img-carousel'>";
             });
 
             console.log(imagesUrl);
 
             let content =  "<div class='popup-description'>"+
             "<h5 class='popup-title'>"+ art.Name +"</h5>"+
-            "<p class='bold'>"+ art.Artist +", "+ art['Year Commissioned']+"</p>"+
+            "<p class='bold'>"+ art.Artist +", "+ art['Year Commissioned']+"</p>    "+
             "<p class=''><b>Art Medium      </b>"+ art.Medium +"</p>"+
             "<p class=''><b>Location     </b>"+ art.Location +"</p>"+
             "<p class=''>"+ art.Description +"</p>"+
@@ -434,6 +434,7 @@
         var currentImage = 0;
         var imagesSlider;
         function eventListener() {
+            currentImage = 0;
             imagesSlider = document.querySelectorAll(".img-carousel");
 
             $('.forward-btn').on("click", moveNext);
